@@ -29,9 +29,12 @@
 
   <!-- Top Action Toolbar -->
   <header class="top-toolbar">
+    <button class="tool-btn btn-lang" id="btn-lang-toggle" onclick="toggleLanguage()" title="Chuyển ngôn ngữ / Switch Language">
+      🇺🇸 EN
+    </button>
     <button class="tool-btn btn-create-card" onclick="openCustomizer()" title="Tự tạo thiệp của riêng bạn">
       <i class="fa-solid fa-wand-magic-sparkles"></i>
-      <span>Tạo Thiệp Tặng</span>
+      <span id="btn-create-card-text">Tạo Thiệp Tặng</span>
     </button>
     <button class="tool-btn" id="btn-storm" onclick="togglePetalStorm()" title="Bật/Tắt mưa cánh hoa">
       <i class="fa-solid fa-spa"></i>
@@ -103,12 +106,12 @@
   <div class="modal-overlay" id="customizer-modal" onclick="if(event.target===this) closeCustomizer()">
     <div class="customizer-card">
       <div class="customizer-header">
-        <h2><i class="fa-solid fa-wand-magic-sparkles" style="color:var(--rose-red);"></i> Tạo Thiệp Tặng Riêng</h2>
+        <h2><i class="fa-solid fa-wand-magic-sparkles" style="color:var(--rose-red);"></i> <span id="modal-customizer-title">Tạo Thiệp Tặng Riêng</span></h2>
         <button class="btn-close-popup" onclick="closeCustomizer()">&times;</button>
       </div>
 
       <div class="form-group">
-        <label for="select-occasion"><i class="fa-solid fa-calendar-days" style="color:var(--rose-red);"></i> Dịp lễ / Sự kiện chúc mừng:</label>
+        <label for="select-occasion" id="lbl-occasion"><i class="fa-solid fa-calendar-days" style="color:var(--rose-red);"></i> Dịp lễ / Sự kiện chúc mừng:</label>
         <select id="select-occasion" onchange="onOccasionSelectChange(this.value)">
           <option value="8-3">🌷 Quốc Tế Phụ Nữ (8/3)</option>
           <option value="20-10">🌹 Phụ Nữ Việt Nam (20/10)</option>
@@ -120,17 +123,17 @@
       </div>
 
       <div class="form-group">
-        <label for="input-recipient"><i class="fa-solid fa-heart" style="color:var(--rose-red);"></i> Tên người nhận (Cô ấy / Bạn bè / Mẹ):</label>
+        <label for="input-recipient" id="lbl-recipient"><i class="fa-solid fa-heart" style="color:var(--rose-red);"></i> Tên người nhận (Cô ấy / Bạn bè / Mẹ):</label>
         <input type="text" id="input-recipient" placeholder="Ví dụ: Nàng Thơ, Em Bé, Mẹ Kính Yêu, Lan Anh...">
       </div>
 
       <div class="form-group">
-        <label for="input-sender"><i class="fa-solid fa-user-pen"></i> Tên người gửi (Bạn):</label>
+        <label for="input-sender" id="lbl-sender"><i class="fa-solid fa-user-pen"></i> Tên người gửi (Bạn):</label>
         <input type="text" id="input-sender" placeholder="Ví dụ: Người luôn yêu thương bạn, Anh...">
       </div>
 
       <div class="form-group">
-        <label><i class="fa-solid fa-quote-left"></i> Gợi ý mẫu lời chúc nhanh:</label>
+        <label id="lbl-wishes"><i class="fa-solid fa-quote-left"></i> Gợi ý mẫu lời chúc nhanh:</label>
         <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px;">
           <button type="button" class="btn-open-box" style="padding: 5px 12px; font-size: 0.75rem;" onclick="applyPresetWish('8-3')">🌷 8/3</button>
           <button type="button" class="btn-open-box" style="padding: 5px 12px; font-size: 0.75rem;" onclick="applyPresetWish('20-10')">🌹 20/10</button>
@@ -143,17 +146,17 @@
       </div>
 
       <div class="form-group">
-        <label for="select-song"><i class="fa-solid fa-music"></i> Giai điệu mở đầu mặc định:</label>
+        <label for="select-song" id="lbl-song"><i class="fa-solid fa-music"></i> Giai điệu mở đầu mặc định:</label>
         <select id="select-song">
           <!-- Populated by JavaScript -->
         </select>
       </div>
 
       <div class="modal-actions">
-        <button class="btn-save-custom" onclick="saveCustomCard()">
+        <button class="btn-save-custom" id="btn-save-custom" onclick="saveCustomCard()">
           <i class="fa-solid fa-check"></i> Lưu & Áp Dụng
         </button>
-        <button class="btn-copy-share" onclick="copyShareableUrl()" title="Tạo đường link chứa lời chúc để gửi tặng">
+        <button class="btn-copy-share" id="btn-copy-share" onclick="copyShareableUrl()" title="Tạo đường link chứa lời chúc để gửi tặng">
           <i class="fa-solid fa-share-nodes"></i> Sao Chép Link Tặng
         </button>
       </div>
