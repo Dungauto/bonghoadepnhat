@@ -42,10 +42,11 @@ body {
 .bg-overlay {
   position: fixed;
   inset: 0;
-  background: url('../images/11.gif') no-repeat center center/cover;
-  opacity: 0.15;
-  filter: blur(6px);
+  background: url('../images/flower_bg.jpg') no-repeat center center/cover;
+  opacity: 0.38;
+  filter: blur(2px);
   z-index: 0;
+  transform: scale(1.03);
   pointer-events: none;
 }
 
