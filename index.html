@@ -1,258 +1,176 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Món quà nho nhỏ</title>
-    <link rel="stylesheet" href="styles.css">
-    <script>
-        window.onload = function() {
-            alert("Xin chào cô gái dễ thương nhất quả đất!");
-        };
-        </script>
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Bông Hoa Đẹp Nhất - Món Quà Âm Nhạc & Yêu Thương</title>
+  <meta name="description" content="Thiệp âm nhạc và cánh hoa tương tác 3D lãng mạn dành tặng người phụ nữ bạn yêu thương nhất">
 
+  <!-- Favicon -->
+  <link rel="icon" href="assets/images/gift2.png" type="image/png">
+
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
 <body>
 
-    <div class="gift-container">
-        <div class="gift" onclick="openCard(0)">
-            <img src="gift2.png" alt="Gift 1">
-            <audio id="audio0">
-                <source src="1.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-        </div>
-        <div class="gift" onclick="openCard(1)">
-            <img src="gift2.png" alt="Gift 2">
-            <audio id="audio1">
-                <source src="2SilentOpen-Cagnet-2673230.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-        </div>
-        <div class="gift" onclick="openCard(2)">
-            <img src="gift2.png" alt="Gift 3">
-            <audio id="audio2">
-                <source src="3.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-        </div>
-        <div class="gift" onclick="openCard(3)">
-            <img src="gift2.png" alt="Gift 4">
-            <audio id="audio3">
-                <source src="i do.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-        </div>
-        <div class="gift" onclick="openCard(4)">
-            <img src="gift2.png" alt="Gift 5">
-            <audio id="audio4">
-                <source src="11Gio-Noi-Roi-Tieu-Uc-Tinh.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-        </div>
-        <div class="gift" onclick="openCard(5)">
-            <img src="gift2.png" alt="Gift 6">
-            <audio id="audio5">
-                <source src="Nothings gonna change my love for you  Vietsub  Westlife.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-        </div>
-        <div class="gift" onclick="openCard(6)">
-            <img src="gift2.png" alt="Gift 7">
-            <audio id="audio6">
-                <source src="Proud Of You  Fiona Fung Lyrics  Vietsub.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-        </div>
-        <div class="gift" onclick="openCard(7)">
-            <img src="gift2.png" alt="Gift 8">
-            <audio id="audio7">
-                <source src="Sau lời từ khước OST MAI  Phan Mạnh Quỳnh  Lyrics video.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-        </div>
-        <div class="gift" onclick="openCard(8)">
-            <img src="gift2.png" alt="Gift 9">
-            <audio id="audio8">
-                <source src="Passenger  Let Her Go Official Video.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-        </div>
-        <div class="gift" onclick="openCard(9)">
-            <img src="gift2.png" alt="Gift 10">
-            <audio id="audio9">
-                <source src="Đường Tôi Chở Em Về  buitruonglinh  Lyrics Video .mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-        </div>
-        <div class="gift" onclick="openCard(10)">
-            <img src="gift2.png" alt="Gift 11">
-            <audio id="audio10">
-                <source src="THẰNG ĐIÊN  JUSTATEE x PHƯƠNG LY  OFFICIAL MV.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-        </div>
-        <div class="gift" onclick="openCard(11)">
-            <img src="gift2.png" alt="Gift 12">
-            <audio id="audio11">
-                <source src="12Cause-I-Love-You-Noo-Phuoc-Thinh.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-            <img src="11.jpg" alt="Hoa">
-        </div>
+  <!-- Ambient Glow & Video/GIF Background -->
+  <div class="bg-overlay"></div>
+
+  <!-- Falling Petals & Confetti Canvases -->
+  <canvas id="petals-canvas"></canvas>
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Top Action Toolbar -->
+  <header class="top-toolbar">
+    <button class="tool-btn btn-create-card" onclick="openCustomizer()" title="Tự tạo thiệp của riêng bạn">
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+      <span>Tạo Thiệp Tặng</span>
+    </button>
+    <button class="tool-btn" id="btn-storm" onclick="togglePetalStorm()" title="Bật/Tắt mưa cánh hoa">
+      <i class="fa-solid fa-spa"></i>
+    </button>
+    <button class="tool-btn" id="btn-sound" onclick="toggleSoundSFX()" title="Bật/Tắt âm thanh hiệu ứng">
+      <i class="fa-solid fa-volume-high"></i>
+    </button>
+  </header>
+
+  <!-- Hero Presentation Header -->
+  <section class="hero-header">
+    <div class="badge-tag">
+      <i class="fa-solid fa-heart"></i>
+      <span>Món Quà Tình Yêu & Sự Trân Trọng</span>
     </div>
-
-    <div class="card-overlay" id="overlay">
-        <div class="card" id="card">
-            <span class="close" onclick="closeCard()">&times;</span>
-            <h2>For you</h2>
-            <p id="card-content"></p>
-            <div class="message">
-                <a href="https://www.facebook.com/messages/t/100015156520416" target="_blank">
-                    <p style="font-size: 15px; ">Nhắn cho tui ở đây!!! </p>
-                </a>
-            </div>
-
-        </div>
+    <h1 class="hero-title">Bông Hoa Đẹp Nhất</h1>
+    <p class="hero-subtitle">
+      "Mỗi người phụ nữ là một đóa hoa độc nhất vô nhị trên thế gian — luôn rạng rỡ và ngát hương theo cách riêng của mình."
+    </p>
+    <div>
+      <span class="recipient-banner" id="recipient-display">Dành tặng: Nàng Thơ 🌸</span>
     </div>
+  </section>
 
-    <script>
-        var cardContent = [
-            {
-                stt: "[1]",
-                message: "Yêu cầu đồng chí tắt điện thoại"
-                    + "<br> Lên giường, đắp chăn, đi ngủ"
-                    + "<br> Ngủ ngon nhá >>",
-                image: "sleep.gif"
-            },
-            {
-                stt: "[2]",
-                message: "Đố em biết bài này trong phim nào?"
-                    +"<br>Silent Open"
-                    + "<br>- Cagnet -",
-                image: "11.jpg"
-            },
-            {
-                stt: "[3]",
-                message: "Tháng 3 nhiều niềm vui, may mắn"
-                    + "<br> Tuổi mới nhiều niềm vui nhé cô bé!",
-                image: "12.jpg"
-            },
-            {
-                stt: "[4]",
-                message:"Tháng 4<br>"
-                    + "<br>I Do"
-                    + "<br>- 911 -", 
-                image: "12.gif"
-            },
-            {
-                stt: "[5]",
-                message:"Tháng 5<br>"
-                    + "<br> Gió nổi rồi"
-                    + "<br>- Tiêu Ức Tĩnh -",
-                image: "7.gif"
-            },
-            {
-                stt: "[6]",
-                message:"Tháng 6 bớt cáu bẩn :D<br>"
-                    + "<br>Nothing's gonna change my love for you"
-                    + "<br>- Westlife -",
-                image: "21.gif"
-            },
-            {
-                stt: "[7]",
-                message:"Tháng 7 <br>"
-                    + "<br>Proud Of You"
-                    + "<br>- Fiona Fung -",
-                image: "32.gif"
-            },
-            {
-                stt: "[8]",
-                message:"Tháng 8<br>"
-                    + "<br>Sau lời từ khước"
-                    + "<br>- Phan Mạnh Quỳnh -",
-                image: "23.gif"
-            },
-            {
-                stt: "[9]",
-                message:"Tháng 9<br>"
-                    + "<br> Let Her Go"
-                    + "<br>- Passenger -", 
-                image: "30.gif"
-            },
-            {
-                stt: "[10]",
-                message:"Tháng 10<br>"
-                    + "<br>Đường Tôi Chở Em Về"
-                    + "<br>- buitruonglinh -",
-                image: "15.gif"
-            },
-            {
-                stt: "[11]",
-                message:"Tháng 11<br>"
-                    + "<br>THẰNG ĐIÊN"
-                    + "<br>- JUSTATEE x PHƯƠNG LY -",
-                image: "10.gif"
-            },
-            {
-                stt: "[12]",
-                message:"Tháng 12<br>"
-                    + "<br>Cause I Love You"
-                    + "<br>- Noo Phước Thịnh -",
-                image: "16.gif"
-            },
-        ];
-        var lastPlayedAudio = null;
+  <!-- 12 Blooming Gift Boxes Grid -->
+  <main class="gifts-wrapper">
+    <div class="gifts-grid" id="gifts-grid">
+      <!-- Generated dynamically by app.js -->
+    </div>
+  </main>
 
-        function openCard(index) {
-            var overlay = document.getElementById("overlay");
-            var card = document.getElementById("card");
-            var content = document.getElementById("card-content");
-            var image = document.createElement("img");
+  <!-- Interactive 3D Card Bloom Popup Modal -->
+  <div class="modal-overlay" id="popup-modal" onclick="if(event.target===this) closePopup()">
+    <div class="card-popup">
+      <button class="btn-close-popup" onclick="closePopup()">&times;</button>
+      
+      <span class="popup-tag" id="popup-month">Tháng 1</span>
+      <h2 class="popup-title" id="popup-header-title">Dành Riêng Cho Bạn</h2>
 
-            content.innerHTML = "Hộp nhạc số " + cardContent[index].stt;
-            overlay.style.display = "block";
+      <div class="popup-img-wrapper">
+        <img src="" alt="Hình ảnh thông điệp" class="popup-img" id="popup-img">
+      </div>
 
-            // Tạo thẻ hình ảnh và thiết lập thuộc tính src và alt
-            image.src = cardContent[index].image;
-            image.alt = "Hình ảnh quà số " + (index + 1);
-            // Thêm lớp CSS mới cho hình ảnh
-            image.classList.add("card-image");
+      <div class="typewriter-box">
+        <p class="popup-message">
+          <span id="popup-message-text"></span><span class="typed-cursor"></span>
+        </p>
+      </div>
 
-            // Tạo thẻ p để hiển thị thông điệp và thiết lập nội dung
-            var message = document.createElement("p");
-            message.innerHTML = cardContent[index].message;
+      <div class="popup-song-badge">
+        <i class="fa-solid fa-compact-disc"></i>
+        <span id="popup-song-title">Đang tải giai điệu...</span>
+      </div>
+    </div>
+  </div>
 
-            // Thêm thông điệp vào nội dung của thẻ card
-            content.appendChild(message);
+  <!-- Customizer Modal (Tạo thiệp gửi tặng) -->
+  <div class="modal-overlay" id="customizer-modal" onclick="if(event.target===this) closeCustomizer()">
+    <div class="customizer-card">
+      <div class="customizer-header">
+        <h2><i class="fa-solid fa-wand-magic-sparkles" style="color:var(--rose-red);"></i> Tạo Thiệp Tặng Riêng</h2>
+        <button class="btn-close-popup" onclick="closeCustomizer()">&times;</button>
+      </div>
 
-            // Thêm hình ảnh vào nội dung của thẻ card
-            content.appendChild(image);
+      <div class="form-group">
+        <label for="input-recipient"><i class="fa-solid fa-heart" style="color:var(--rose-red);"></i> Tên người nhận (Cô ấy / Bạn bè / Mẹ):</label>
+        <input type="text" id="input-recipient" placeholder="Ví dụ: Nàng Thơ, Em Bé, Mẹ Kính Yêu, Lan Anh...">
+      </div>
 
-            // Hiển thị overlay và thẻ card
-            overlay.classList.add("open");
+      <div class="form-group">
+        <label for="input-sender"><i class="fa-solid fa-user-pen"></i> Tên người gửi (Bạn):</label>
+        <input type="text" id="input-sender" placeholder="Ví dụ: Người luôn yêu thương bạn, Anh...">
+      </div>
 
+      <div class="form-group">
+        <label><i class="fa-solid fa-quote-left"></i> Gợi ý mẫu lời chúc nhanh:</label>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px;">
+          <button type="button" class="btn-open-box" style="padding: 5px 12px; font-size: 0.75rem;" onclick="applyPresetWish('romantic')">💖 Lãng mạn</button>
+          <button type="button" class="btn-open-box" style="padding: 5px 12px; font-size: 0.75rem;" onclick="applyPresetWish('respect')">💐 Tặng Mẹ/Chị</button>
+          <button type="button" class="btn-open-box" style="padding: 5px 12px; font-size: 0.75rem;" onclick="applyPresetWish('friendship')">👭 Bạn thân</button>
+          <button type="button" class="btn-open-box" style="padding: 5px 12px; font-size: 0.75rem;" onclick="applyPresetWish('birthday')">🎂 Sinh nhật</button>
+        </div>
+        <textarea id="input-message" placeholder="Nhập những lời chúc chân thành, ngọt ngào nhất..."></textarea>
+      </div>
 
-            var audio = document.getElementById("audio" + index);
-            audio.play();
-            if (lastPlayedAudio !== null) {
-                lastPlayedAudio.pause();
-                lastPlayedAudio.currentTime = 0;
-            }
-            lastPlayedAudio = audio;
-        }
+      <div class="form-group">
+        <label for="select-song"><i class="fa-solid fa-music"></i> Giai điệu mở đầu mặc định:</label>
+        <select id="select-song">
+          <!-- Populated by JavaScript -->
+        </select>
+      </div>
 
-        function closeCard() {
-            var overlay = document.getElementById("overlay");
-            overlay.style.display = "none";
-            if (lastPlayedAudio !== null) {
-                lastPlayedAudio.pause();
-                lastPlayedAudio.currentTime = 0;
-            }
-        }
-    </script>
+      <div class="modal-actions">
+        <button class="btn-save-custom" onclick="saveCustomCard()">
+          <i class="fa-solid fa-check"></i> Lưu & Áp Dụng
+        </button>
+        <button class="btn-copy-share" onclick="copyShareableUrl()" title="Tạo đường link chứa lời chúc để gửi tặng">
+          <i class="fa-solid fa-share-nodes"></i> Sao Chép Link Tặng
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Bottom Music Player Dock -->
+  <aside class="music-dock" id="music-dock">
+    <div class="dock-vinyl">
+      <i class="fa-solid fa-compact-disc"></i>
+    </div>
+    <div class="track-meta">
+      <div class="track-name" id="track-title">Khúc Ca Dịu Êm - Chúc Ngủ Ngon</div>
+      <div class="track-progress-container" id="track-progress-container" onclick="seekAudio(event)">
+        <div class="track-progress-bar" id="track-progress-bar"></div>
+      </div>
+    </div>
+    <div class="player-controls">
+      <button class="ctrl-btn" onclick="prevSong()" title="Bài trước">
+        <i class="fa-solid fa-backward-step"></i>
+      </button>
+      <button class="ctrl-btn play-btn" onclick="toggleAudio()" id="btn-dock-play" title="Phát/Dừng">
+        <i class="fa-solid fa-play" id="dock-play-icon"></i>
+      </button>
+      <button class="ctrl-btn" onclick="nextSong()" title="Bài tiếp">
+        <i class="fa-solid fa-forward-step"></i>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Toast Notification System -->
+  <div class="toast-msg" id="toast-notification">
+    <i class="fa-solid fa-circle-check" style="color: var(--gold);"></i>
+    <span id="toast-text">Thông báo</span>
+  </div>
+
+  <!-- Hidden HTML5 Audio Element -->
+  <audio id="main-audio" preload="auto"></audio>
+
+  <!-- Modular Scripts -->
+  <script src="assets/js/petals.js"></script>
+  <script src="assets/js/audio.js"></script>
+  <script src="assets/js/app.js"></script>
 </body>
-
 </html>
-

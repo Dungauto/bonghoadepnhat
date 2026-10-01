@@ -1,0 +1,798 @@
+/* ==========================================================================
+   BÔNG HOA ĐẸP NHẤT - ROMANTIC FLORAL THEME
+   Author: Dung Automation
+   ========================================================================== */
+
+:root {
+  --primary-pink: #ff6b8b;
+  --rose-red: #e63946;
+  --deep-wine: #590d22;
+  --blush-pink: #ffb3c1;
+  --soft-pink: #fff0f3;
+  --gold: #f9bc60;
+  --gold-shimmer: #ffe3a8;
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.6);
+  --glass-shadow: 0 15px 35px rgba(89, 13, 34, 0.15), 0 5px 15px rgba(0, 0, 0, 0.08);
+  --transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: radial-gradient(circle at 50% 20%, #ffe5ec 0%, #ffc2d1 40%, #ff85a1 100%);
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding-bottom: 120px;
+}
+
+/* Background Ambient Glow & Particles */
+.bg-overlay {
+  position: fixed;
+  inset: 0;
+  background: url('../images/11.gif') no-repeat center center/cover;
+  opacity: 0.15;
+  filter: blur(6px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Falling Petals Canvas */
+#petals-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+#confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* --------------------------------------------------------------------------
+   Top Action Toolbar
+   -------------------------------------------------------------------------- */
+.top-toolbar {
+  position: fixed;
+  top: 18px;
+  right: 20px;
+  z-index: 50;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.tool-btn {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  color: var(--deep-wine);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: var(--transition);
+  box-shadow: 0 4px 15px rgba(89, 13, 34, 0.12);
+}
+
+.tool-btn:hover {
+  background: #fff;
+  transform: scale(1.1) rotate(6deg);
+  box-shadow: 0 6px 20px rgba(230, 57, 70, 0.3);
+}
+
+.btn-create-card {
+  width: auto;
+  border-radius: 25px;
+  padding: 0 18px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  gap: 8px;
+  background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+  color: #fff;
+  border: none;
+}
+
+.btn-create-card:hover {
+  background: linear-gradient(135deg, #ff5277 0%, #ff65a5 100%);
+  color: #fff;
+}
+
+/* --------------------------------------------------------------------------
+   Header Hero Section
+   -------------------------------------------------------------------------- */
+.hero-header {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 45px 20px 25px 20px;
+  max-width: 800px;
+}
+
+.badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  color: var(--deep-wine);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 6px 18px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 179, 193, 0.6);
+  box-shadow: 0 4px 12px rgba(89, 13, 34, 0.08);
+  margin-bottom: 12px;
+}
+
+.badge-tag i {
+  color: var(--rose-red);
+}
+
+.hero-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3.8rem;
+  line-height: 1.1;
+  background: linear-gradient(135deg, #800f2f 0%, #c9184a 50%, #ff758f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 2px 8px rgba(128, 15, 47, 0.15));
+}
+
+.hero-subtitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: #590d22;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.recipient-banner {
+  margin-top: 15px;
+  display: inline-block;
+  background: #fff;
+  padding: 8px 24px;
+  border-radius: 20px;
+  color: var(--deep-wine);
+  font-weight: 700;
+  font-size: 1rem;
+  border: 1.5px dashed var(--primary-pink);
+  box-shadow: 0 4px 15px rgba(255, 107, 139, 0.15);
+}
+
+/* --------------------------------------------------------------------------
+   12 Blooming Gift Grid
+   -------------------------------------------------------------------------- */
+.gifts-wrapper {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1100px;
+  padding: 10px 20px;
+}
+
+.gifts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px;
+  justify-content: center;
+}
+
+.gift-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 22px;
+  border: 2px solid var(--glass-border);
+  padding: 22px 18px;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--glass-shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.gift-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #ff758c, #ff7eb3, #f9bc60);
+  opacity: 0.8;
+}
+
+.gift-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  background: rgba(255, 255, 255, 0.96);
+  border-color: #ffb3c1;
+  box-shadow: 0 20px 40px rgba(230, 57, 70, 0.22);
+}
+
+.gift-icon-box {
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff0f3 0%, #ffd6dc 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  border: 2px solid #fff;
+  box-shadow: 0 6px 18px rgba(255, 107, 139, 0.2);
+  position: relative;
+  transition: transform 0.4s ease;
+}
+
+.gift-card:hover .gift-icon-box {
+  transform: scale(1.12) rotate(8deg);
+}
+
+.gift-icon-img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+}
+
+.gift-month-tag {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--primary-pink);
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.gift-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--deep-wine);
+  margin-bottom: 6px;
+}
+
+.gift-song-meta {
+  font-size: 0.82rem;
+  color: #777;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.gift-song-meta i {
+  color: var(--rose-red);
+  font-size: 0.75rem;
+}
+
+.btn-open-box {
+  background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 18px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition);
+  box-shadow: 0 4px 12px rgba(255, 107, 139, 0.25);
+}
+
+.gift-card:hover .btn-open-box {
+  background: linear-gradient(135deg, #e63946 0%, #ff4d6d 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(230, 57, 70, 0.35);
+}
+
+/* --------------------------------------------------------------------------
+   Interactive Card Modal (3D Bloom Pop-up)
+   -------------------------------------------------------------------------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(43, 8, 18, 0.65);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal-overlay.open {
+  display: flex;
+  opacity: 1;
+}
+
+.card-popup {
+  background: #ffffff;
+  width: 100%;
+  max-width: 520px;
+  border-radius: 28px;
+  padding: 36px 28px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+  border: 2px solid rgba(255, 182, 193, 0.8);
+  animation: bloomIn 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+@keyframes bloomIn {
+  from { transform: scale(0.7) translateY(40px); opacity: 0; }
+  to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.btn-close-popup {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f8f9fa;
+  border: none;
+  font-size: 1.1rem;
+  color: #777;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.btn-close-popup:hover {
+  background: #ffe3e8;
+  color: var(--rose-red);
+  transform: rotate(90deg);
+}
+
+.popup-tag {
+  display: inline-block;
+  background: #fff0f3;
+  color: var(--rose-red);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 5px 16px;
+  border-radius: 20px;
+  border: 1px solid #ffccd5;
+  margin-bottom: 12px;
+}
+
+.popup-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.5rem;
+  color: var(--deep-wine);
+  margin-bottom: 15px;
+}
+
+.popup-img-wrapper {
+  width: 100%;
+  max-width: 320px;
+  height: 200px;
+  margin: 0 auto 20px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 3px solid #fff;
+  box-shadow: 0 8px 25px rgba(89, 13, 34, 0.15);
+  background: #fdf0f3;
+}
+
+.popup-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.typewriter-box {
+  background: #fff8f9;
+  border-radius: 18px;
+  padding: 20px 22px;
+  border: 1px dashed #ffb3c1;
+  margin-bottom: 20px;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-message {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  line-height: 1.7;
+  color: #3d0c1b;
+}
+
+.typed-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.15rem;
+  background: var(--rose-red);
+  margin-left: 3px;
+  vertical-align: middle;
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.popup-song-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff0f3;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 0.88rem;
+  color: var(--deep-wine);
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.popup-song-badge i {
+  color: var(--rose-red);
+  animation: pulseBeat 1.4s infinite;
+}
+
+@keyframes pulseBeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+}
+
+/* --------------------------------------------------------------------------
+   Customizer Modal
+   -------------------------------------------------------------------------- */
+.customizer-card {
+  background: #fff;
+  width: 100%;
+  max-width: 520px;
+  border-radius: 26px;
+  padding: 30px 24px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+  text-align: left;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: bloomIn 0.4s ease;
+}
+
+.customizer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.customizer-header h2 {
+  font-size: 1.35rem;
+  color: var(--deep-wine);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #555;
+}
+
+.form-group input, 
+.form-group textarea, 
+.form-group select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid #ffd1dc;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus, 
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary-pink);
+  box-shadow: 0 0 0 3px rgba(255, 107, 139, 0.15);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.btn-save-custom {
+  flex: 1;
+  background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: var(--transition);
+}
+
+.btn-save-custom:hover {
+  box-shadow: 0 6px 20px rgba(255, 107, 139, 0.35);
+  transform: translateY(-2px);
+}
+
+.btn-copy-share {
+  background: #2a9d8f;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition);
+}
+
+.btn-copy-share:hover {
+  background: #21867a;
+  transform: translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   Floating Bottom Music Player Dock
+   -------------------------------------------------------------------------- */
+.music-dock {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 40;
+  background: rgba(43, 8, 18, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 40px;
+  padding: 8px 18px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  max-width: 92vw;
+  width: 440px;
+  transition: var(--transition);
+}
+
+.dock-vinyl {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--gold);
+  flex-shrink: 0;
+}
+
+.dock-vinyl i {
+  font-size: 1.1rem;
+  color: var(--gold);
+}
+
+.playing .dock-vinyl {
+  animation: spinVinyl 4s linear infinite;
+}
+
+@keyframes spinVinyl {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.track-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.track-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #fff;
+}
+
+.track-progress-container {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.track-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #ff758c, #f9bc60);
+  border-radius: 2px;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+.player-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ctrl-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: var(--transition);
+}
+
+.ctrl-btn:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.ctrl-btn.play-btn {
+  background: var(--gold);
+  color: #111;
+  width: 36px;
+  height: 36px;
+  font-size: 0.95rem;
+}
+
+.ctrl-btn.play-btn:hover {
+  transform: scale(1.1);
+  background: var(--gold-shimmer);
+}
+
+/* --------------------------------------------------------------------------
+   Toast Notifications
+   -------------------------------------------------------------------------- */
+.toast-msg {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  background: rgba(43, 8, 18, 0.95);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid var(--primary-pink);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toast-msg.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Media Queries
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+  .gifts-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .top-toolbar {
+    top: 14px;
+    right: 14px;
+    gap: 6px;
+  }
+  .btn-create-card span {
+    display: none;
+  }
+  .btn-create-card {
+    width: 44px;
+    padding: 0;
+    justify-content: center;
+  }
+  .music-dock {
+    width: 94vw;
+    padding: 8px 14px;
+    bottom: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gifts-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+}
