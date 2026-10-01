@@ -43,16 +43,27 @@
 
   <!-- Hero Presentation Header -->
   <section class="hero-header">
-    <div class="badge-tag">
+    <div class="badge-tag" id="hero-badge-tag">
       <i class="fa-solid fa-heart"></i>
-      <span>Món Quà Tình Yêu & Sự Trân Trọng</span>
+      <span>Chúc Mừng Ngày Quốc Tế Phụ Nữ 8/3 🌷</span>
     </div>
-    <h1 class="hero-title">Bông Hoa Đẹp Nhất</h1>
-    <p class="hero-subtitle">
-      "Mỗi người phụ nữ là một đóa hoa độc nhất vô nhị trên thế gian — luôn rạng rỡ và ngát hương theo cách riêng của mình."
+    <h1 class="hero-title" id="hero-title">Bông Hoa Đẹp Nhất 8/3</h1>
+    <p class="hero-subtitle" id="hero-subtitle">
+      "Gửi ngàn đóa hoa tươi thắm và lời chúc ngọt ngào nhất đến người phụ nữ tuyệt vời nhân ngày Quốc tế Phụ nữ!"
     </p>
+
+    <!-- Occasion Selector Navigation -->
+    <nav class="occasion-nav" aria-label="Chọn ngày lễ">
+      <button class="occasion-pill active" data-event="8-3" onclick="setOccasion('8-3', true)">🌷 8/3 Quốc Tế Phụ Nữ</button>
+      <button class="occasion-pill" data-event="20-10" onclick="setOccasion('20-10', true)">🌹 20/10 Phụ Nữ VN</button>
+      <button class="occasion-pill" data-event="14-2" onclick="setOccasion('14-2', true)">💖 14/2 Valentine</button>
+      <button class="occasion-pill" data-event="mother" onclick="setOccasion('mother', true)">💐 Ngày Của Mẹ</button>
+      <button class="occasion-pill" data-event="birthday" onclick="setOccasion('birthday', true)">🎂 Sinh Nhật Nàng</button>
+      <button class="occasion-pill" data-event="love" onclick="setOccasion('love', true)">✨ Ngày Yêu Thương</button>
+    </nav>
+
     <div>
-      <span class="recipient-banner" id="recipient-display">Dành tặng: Nàng Thơ 🌸</span>
+      <span class="recipient-banner" id="recipient-display">Dành tặng: Nàng Thơ — Bông hoa rực rỡ nhất ngày 8/3 🌸</span>
     </div>
   </section>
 
@@ -97,6 +108,18 @@
       </div>
 
       <div class="form-group">
+        <label for="select-occasion"><i class="fa-solid fa-calendar-days" style="color:var(--rose-red);"></i> Dịp lễ / Sự kiện chúc mừng:</label>
+        <select id="select-occasion" onchange="onOccasionSelectChange(this.value)">
+          <option value="8-3">🌷 Quốc Tế Phụ Nữ (8/3)</option>
+          <option value="20-10">🌹 Phụ Nữ Việt Nam (20/10)</option>
+          <option value="14-2">💖 Lễ Tình Nhân (Valentine 14/2)</option>
+          <option value="mother">💐 Ngày Của Mẹ (Mother's Day)</option>
+          <option value="birthday">🎂 Sinh Nhật Nàng Thơ</option>
+          <option value="love">✨ Ngày Yêu Thương Đong Đầy</option>
+        </select>
+      </div>
+
+      <div class="form-group">
         <label for="input-recipient"><i class="fa-solid fa-heart" style="color:var(--rose-red);"></i> Tên người nhận (Cô ấy / Bạn bè / Mẹ):</label>
         <input type="text" id="input-recipient" placeholder="Ví dụ: Nàng Thơ, Em Bé, Mẹ Kính Yêu, Lan Anh...">
       </div>
@@ -109,10 +132,12 @@
       <div class="form-group">
         <label><i class="fa-solid fa-quote-left"></i> Gợi ý mẫu lời chúc nhanh:</label>
         <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px;">
-          <button type="button" class="btn-open-box" style="padding: 5px 12px; font-size: 0.75rem;" onclick="applyPresetWish('romantic')">💖 Lãng mạn</button>
-          <button type="button" class="btn-open-box" style="padding: 5px 12px; font-size: 0.75rem;" onclick="applyPresetWish('respect')">💐 Tặng Mẹ/Chị</button>
-          <button type="button" class="btn-open-box" style="padding: 5px 12px; font-size: 0.75rem;" onclick="applyPresetWish('friendship')">👭 Bạn thân</button>
+          <button type="button" class="btn-open-box" style="padding: 5px 12px; font-size: 0.75rem;" onclick="applyPresetWish('8-3')">🌷 8/3</button>
+          <button type="button" class="btn-open-box" style="padding: 5px 12px; font-size: 0.75rem;" onclick="applyPresetWish('20-10')">🌹 20/10</button>
+          <button type="button" class="btn-open-box" style="padding: 5px 12px; font-size: 0.75rem;" onclick="applyPresetWish('14-2')">💖 Valentine</button>
+          <button type="button" class="btn-open-box" style="padding: 5px 12px; font-size: 0.75rem;" onclick="applyPresetWish('mother')">💐 Mẹ yêu</button>
           <button type="button" class="btn-open-box" style="padding: 5px 12px; font-size: 0.75rem;" onclick="applyPresetWish('birthday')">🎂 Sinh nhật</button>
+          <button type="button" class="btn-open-box" style="padding: 5px 12px; font-size: 0.75rem;" onclick="applyPresetWish('love')">✨ Yêu thương</button>
         </div>
         <textarea id="input-message" placeholder="Nhập những lời chúc chân thành, ngọt ngào nhất..."></textarea>
       </div>

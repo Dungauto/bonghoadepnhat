@@ -27,24 +27,34 @@
 
 ## ✨ Tính Năng Nổi Bật
 
-### 1. 🎁 12 Hộp Hoa Âm Nhạc Tương Tác (12 Blooming Gift Boxes)
+### 1. 💐 Bộ Chọn Dịp Lễ Tôn Vinh Phái Đẹp (Women's Special Occasions)
+Trang web được thiết kế chuyên biệt để gửi tặng những người phụ nữ tuyệt vời nhân các dịp lễ và khoảnh khắc ý nghĩa:
+- 🌷 **8/3 - Quốc Tế Phụ Nữ**: Tôn vinh nét đẹp, trí tuệ và sự tự tin của phái đẹp.
+- 🌹 **20/10 - Ngày Phụ Nữ Việt Nam**: Lời tri ân sâu sắc gửi đến các bà, các mẹ, các chị và người phụ nữ Việt Nam kiên cường, đảm đang.
+- 💖 **14/2 - Lễ Tình Nhân (Valentine)**: Khúc ca tình yêu ngọt ngào, lãng mạn dành cho một nửa yêu thương.
+- 🤱 **Ngày Của Mẹ (Mother's Day)**: Lời cảm ơn chân thành tới người mẹ kính yêu - đóa hoa vĩ đại nhất cuộc đời.
+- 🎂 **Sinh Nhật Nàng Thơ**: Chúc mừng tuổi mới luôn rực rỡ, may mắn và hạnh phúc.
+- ✨ **Ngày Yêu Thương Đong Đầy**: Bất ngờ dành tặng người phụ nữ bạn quý mến trong bất kỳ ngày bình thường nào.
+> Khi chọn từng dịp lễ, toàn bộ tiêu đề trang, lời đề tặng, biểu tượng hoa và thông điệp mẫu sẽ tự động đồng bộ hóa tương ứng!
+
+### 2. 🎁 12 Hộp Hoa Âm Nhạc Tương Tác (12 Blooming Gift Boxes)
 - Giao diện lưới kính mờ (*Glassmorphism*) sang trọng, viền vàng kim óng ánh.
-- Mỗi hộp quà tượng trưng cho một tháng trong năm hoặc một thông điệp cảm xúc (Khởi đầu bình yên, Lời hẹn ước, Tự hào bản thân...).
+- Mỗi hộp quà tượng trưng cho một tháng trong năm hoặc một phẩm chất cao quý (Dịu Dàng & Thuần Khiết, Kiên Cường & Tỏa Sáng, Nụ Cười Ban Mai, Yêu Thương Trọn Vẹn, Nữ Vương Cuộc Đời...).
 - Hiệu ứng Hover 3D mượt mà mời gọi người xem chạm mở.
 
-### 2. 🌸 Động Cơ Cánh Hoa Rơi Vật Lý Canvas 60 FPS
+### 3. 🌸 Động Cơ Cánh Hoa Rơi Vật Lý Canvas 60 FPS
 - Mô phỏng cánh hoa hồng và hoa anh đào bay lượn theo gió bằng HTML5 Canvas siêu nhẹ.
 - Cánh hoa xoay lật 3D tự nhiên và dạt nhẹ theo chuyển động di chuột / cảm ứng màn hình.
 - Nút **Mưa Cánh Hoa (🌸)**: Bật/tắt chế độ cánh hoa rơi dày đặc tạo khung cảnh thơ mộng.
 
-### 3. 💌 Trải Nghiệm Mở Thiệp 3D & Chữ Gõ Máy (Typewriter Effect)
+### 4. 💌 Trải Nghiệm Mở Thiệp 3D & Chữ Gõ Máy (Typewriter Effect)
 - Khi chạm mở bất kỳ hộp quà nào:
   - Bắn pháo hoa cánh hoa (*Petal Burst*) rực rỡ.
   - Âm thanh chuông đàn hạc (*Web Audio Harp SFX*) trong trẻo.
   - Bức thư mở ra với câu chúc xuất hiện theo từng phím gõ (*Typewriter Effect*) kèm ảnh động hoạt hình sinh động.
   - Tự động kích hoạt giai điệu âm nhạc tương ứng.
 
-### 4. 🎶 Trình Phát Nhạc Đĩa Than Đa Bài Hát (12 Tác Phẩm Tuyển Chọn)
+### 5. 🎶 Trình Phát Nhạc Đĩa Than Đa Bài Hát (12 Tác Phẩm Tuyển Chọn)
 - Dock phát nhạc đĩa than (*Spinning Vinyl Record*) hiện đại gắn ở đáy màn hình.
 - Tuyển tập 12 bản nhạc Acoustic, Piano và tình ca bất hủ:
   1. *Khúc Ca Dịu Êm - Chúc Ngủ Ngon*
@@ -60,13 +70,14 @@
   11. *Thằng Điên - JustaTee x Phương Ly*
   12. *Cause I Love You - Noo Phước Thịnh*
 
-### 5. 🎨 Bộ Tùy Biến Thiệp & Tạo Link Chia Sẻ Thông Minh (Smart Share)
+### 6. 🎨 Bộ Tùy Biến Thiệp & Tạo Link Chia Sẻ Thông Minh (Smart Share Link)
 - Bấm nút **"Tạo Thiệp Tặng"** để:
+  - Chọn dịp lễ (8/3, 20/10, Valentine, Ngày của Mẹ, Sinh nhật, Ngày yêu thương).
   - Điền tên người nhận (ví dụ: *Nàng Thơ, Em Bé, Mẹ Kính Yêu, Lan Anh...*).
   - Điền tên người gửi (ví dụ: *Người luôn yêu thương bạn, Anh...*).
-  - Chọn mẫu lời chúc nhanh (Lãng mạn, Tặng Mẹ, Tình bạn, Sinh nhật) hoặc tự viết tâm thư.
-  - Chọn giai điệu phát mặc định.
-- Nút **"Sao Chép Link Tặng"**: Tự động mã hóa tên và lời chúc vào đường dẫn (`?to=...&from=...&msg=...`). Khi người nhận mở link trên điện thoại, toàn bộ thiệp sẽ xuất hiện tên và lời chúc dành riêng cho họ!
+  - Chọn nhanh lời chúc soạn sẵn theo dịp hoặc tự do sáng tạo tâm thư riêng.
+  - Chọn giai điệu phát mặc định khi mở thiệp.
+- Nút **"Sao Chép Link Tặng"**: Tự động mã hóa tất cả cấu hình vào đường dẫn (`?event=...&to=...&from=...&msg=...`). Khi người nhận mở link trên điện thoại hoặc máy tính, toàn bộ thiệp sẽ bung nở với thông điệp riêng dành riêng cho họ!
 
 ---
 
@@ -120,16 +131,22 @@ bonghoadepnhat/
 
 ## 💌 Bảng Tham Số Tùy Biến Link Qua URL (URL Parameters)
 
-| Tham số | Ý nghĩa | Ví dụ |
+| Tham số | Ý nghĩa | Giá trị khả dụng / Ví dụ |
 | :--- | :--- | :--- |
-| `to` | Tên người nhận | `?to=Nàng%20Thơ` |
-| `from` | Tên người gửi | `&from=Anh` |
+| `event` | Dịp lễ tôn vinh | `8-3`, `20-10`, `14-2`, `mother`, `birthday`, `love` |
+| `to` | Tên người nhận | `?to=Nàng%20Thơ`, `?to=Mẹ%20Kính%20Yêu` |
+| `from` | Tên người gửi | `&from=Con%20Trai`, `&from=Anh` |
 | `msg` | Lời chúc riêng | `&msg=Chúc%20bạn%20luôn%20hạnh%20phúc!` |
-| `song` | Số thứ tự bài hát (0 - 11) | `&song=3` |
+| `song` | Số thứ tự bài hát (0 - 11) | `&song=3` (chọn bài hát phát khi vào trang) |
 
-👉 **Ví dụ một đường link hoàn chỉnh**:
+👉 **Ví dụ một đường link chúc 20/10 gửi bạn gái**:
+```text
+https://dungauto.github.io/bonghoadepnhat/?event=20-10&to=Lan%20Anh&from=Tuấn&msg=Chúc%20em%20luôn%20rạng%20ngời%20như%20bông%20hoa%20hồng%20thơm%20ngát!&song=3
 ```
-https://dungauto.github.io/bonghoadepnhat/?to=Bé%20Yêu&from=Người%20Thương&msg=Em%20là%20bông%20hoa%20đẹp%20nhất!
+
+👉 **Ví dụ một đường link chúc Ngày Của Mẹ**:
+```text
+https://dungauto.github.io/bonghoadepnhat/?event=mother&to=Mẹ%20Kính%20Yêu&from=Con&song=6
 ```
 
 ---
