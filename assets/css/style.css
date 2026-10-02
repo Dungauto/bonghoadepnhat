@@ -100,6 +100,7 @@ body {
   font-size: 1.1rem;
   transition: var(--transition);
   box-shadow: 0 4px 15px rgba(89, 13, 34, 0.12);
+  text-decoration: none;
 }
 
 .tool-btn:hover {
